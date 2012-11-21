@@ -6,7 +6,7 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import org.junit.Test;
 
-public class SampleRDF {
+public class SampleRDFTest {
 
     @Test
     public void testJenaOutput() throws Exception {
