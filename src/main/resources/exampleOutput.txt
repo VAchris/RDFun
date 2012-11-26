@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:cgdo="http://datasets.caregraf.org/ontology#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://datasets.caregraf.org/icd9cm/277_39_5">
+    <cgdo:code>277.39</cgdo:code>
+    <cgdo:toLabel>Secondary systemic amyloidosis affecting skin (AA fibril type)</cgdo:toLabel>
+    <cgdo:toCode>402457007</cgdo:toCode>
+    <cgdo:to rdf:resource="http://datasets.caregraf.org/snomed/402457007"/>
+    <rdfs:label>Other amyloidosis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://datasets.caregraf.org/icd9cm/E891_8_4">
+    <cgdo:code>E891.8</cgdo:code>
+    <cgdo:toLabel>Accident due to collapse of burning convalescent home</cgdo:toLabel>
+    <cgdo:toCode>217415001</cgdo:toCode>
+    <cgdo:to rdf:resource="http://datasets.caregraf.org/snomed/217415001"/>
+    <rdfs:label>Other accident resulting from conflagration in other and unspecified building or structure</rdfs:label>
+  </rdf:Description>
