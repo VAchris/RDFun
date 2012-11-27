@@ -8,6 +8,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -39,9 +40,16 @@ public class Runner {
             return;
         }
 
+        // #1 parse the input file
         List<MappedNode> mappedNodes = parseInputFile(inputfile);
+        // #2 build the rdf model
+        Model model = buildRDFModel(mappedNodes);
+        // #3 create the file stream
+        FileOutputStream fos = new FileOutputStream(outputFile);
+        // #4 write the file
+        model.write(fos);
 
-        buildRDF(mappedNodes);
+        System.out.println("Program completed successfully, check out the file -> " + outputFile.getName());
     }
 
     private List<MappedNode> parseInputFile(File inputFile) throws FileNotFoundException {
@@ -70,7 +78,7 @@ public class Runner {
         return mappedNodes;
     }
 
-    private void buildRDF(List<MappedNode> mappedNodes) {
+    private Model buildRDFModel(List<MappedNode> mappedNodes) {
         final String CGDO_URI = "http://datasets.caregraf.org/";
 
         final String CGDO_NAMESPACE = "http://datasets.caregraf.org/ontology#";
@@ -112,7 +120,6 @@ public class Runner {
             model.add(root, to, resource);
         }
 
-//        FileWriter fileWriter = new FileWriter()
-        model.write(System.out);
+        return model;
     }
 }

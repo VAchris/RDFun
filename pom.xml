@@ -57,6 +57,8 @@
                         <argument>-classpath</argument>
                         <classpath/>
                         <argument>com.chrisuyehara.rdfun.Runner</argument>
+                        <argument>src\main\resources\exampleInput.txt</argument>
+                        <argument>out.txt</argument>
                     </arguments>
                 </configuration>
             </plugin>

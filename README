@@ -1,3 +1,10 @@
 Built using:
     * maven 3.0.4
     * java version "1.7.0_09"
+
+Build using: mvn package
+Run using: C:\GitHub\RDFun>java -jar target\rdfun-1.0.jar src\main\resources\exampleInput.txt out.txt
+
+or
+
+Run using: mvn exec:exec
