@@ -70,7 +70,14 @@ public class Runner {
                 MappedNode node = new MappedNode();
 
                 node.setCode(strings[0]);
+                /* don't map if no entry exists */
+                if (null == strings[7] || "" == strings[7].trim()) {
+                    continue;
+                }
                 node.setToCode(strings[7]);
+                if (null == strings[8] || "" == strings[8].trim()) {
+                    continue;
+                }
                 node.setToLabel(strings[8].replace('^', '|'));
                 node.setLabel(strings[1].replace('^', '|'));
 
