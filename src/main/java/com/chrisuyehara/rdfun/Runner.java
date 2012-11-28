@@ -27,11 +27,11 @@ public class Runner {
             return;
         }
 
-        File inputfile = new File(args[0]);
+        File inputFile = new File(args[0]);
         File outputFile = new File(args[1]);
 
-        if (false == inputfile.exists()) {
-            System.out.println("File does not exist: " + inputfile.getAbsolutePath());
+        if (false == inputFile.exists()) {
+            System.out.println("File does not exist: " + inputFile.getAbsolutePath());
             return;
         }
 
@@ -41,15 +41,18 @@ public class Runner {
         }
 
         // #1 parse the input file
-        List<MappedNode> mappedNodes = parseInputFile(inputfile);
+        System.out.println("Parsing input file...");
+        List<MappedNode> mappedNodes = parseInputFile(inputFile);
         // #2 build the rdf model
+        System.out.println("Building RDF model...");
         Model model = buildRDFModel(mappedNodes);
         // #3 create the file stream
+        System.out.println("Writing RDF to disk -> " + outputFile.getName());
         FileOutputStream fos = new FileOutputStream(outputFile);
         // #4 write the file
         model.write(fos);
 
-        System.out.println("Program completed successfully, check out the file -> " + outputFile.getName());
+        System.out.println("Program completed successfully");
     }
 
     private List<MappedNode> parseInputFile(File inputFile) throws FileNotFoundException {
@@ -68,8 +71,8 @@ public class Runner {
 
                 node.setCode(strings[0]);
                 node.setToCode(strings[7]);
-                node.setToLabel(strings[8]);
-                node.setLabel(strings[1]);
+                node.setToLabel(strings[8].replace('^', '|'));
+                node.setLabel(strings[1].replace('^', '|'));
 
                 mappedNodes.add(node);
             }
@@ -96,9 +99,9 @@ public class Runner {
             if (map.containsKey(node.getCode())) {
                 nodeIndex = map.get(node.getCode());
                 nodeIndex++;
-            } else {
-                map.put(node.getCode(), 0);
             }
+
+            map.put(node.getCode(), nodeIndex);
 
             String nodeUrl = node.getCode().replace('.', '_') + "_" + nodeIndex;
             Resource root = model.createResource(CGDO_URI + "icd9cm/" + nodeUrl);
