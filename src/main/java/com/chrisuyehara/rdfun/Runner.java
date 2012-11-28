@@ -80,6 +80,9 @@ public class Runner {
                 if (null == strings[8] || strings[8].trim().equals("")) {
                     continue;
                 }
+                if (strings[8].length() > 200) {
+                    strings[8] = strings[8].substring(0, 200); // TODO address at a later time
+                }
                 node.setToLabel(strings[8].replace('^', '|'));
 
                 node.setLabel(strings[1].replace('^', '|'));
